@@ -50,11 +50,12 @@ Make sure that the proxy supports tunneling. In practical use, this option check
 In combination with the maxResponse option this checks that the proxy responds in a certain amount of time.
 
 ## Usage
+### ES6 with Promises
 ```js
 import { ProxySource } from 'proxy-source';
 
 const options = {
-  timeout: 60000,
+  timeout: 10000,
   maxResponse: 3000,
   check: {
     anonymityLevel: false,
@@ -67,9 +68,39 @@ const options = {
 };
 
 const proxySource = new ProxySource(options);
-await proxySource.initialize();
+proxySource.initialize().then(() => {
+  proxySource.get().then((proxy) => {
+    console.log(proxy);
+  });
+});
+```
 
-const proxy = await proxySource.get();
+### ES7 with async/await
+```js
+import { ProxySource } from 'proxy-source';
+
+const options = {
+  timeout: 10000,
+  maxResponse: 3000,
+  check: {
+    anonymityLevel: false,
+    protocols: true,
+    tunneling: true,
+  },
+  /* proxy-lists config follows*/
+  series: false,
+  protocols: ['http', 'https'],
+};
+
+const func = async () => {
+  const proxySource = new ProxySource(options);
+  await proxySource.initialize();
+
+  const proxy = await proxySource.get();
+  console.log(proxy);
+}
+
+func();
 ```
 
 Even if no checks are active, the get method will return a proxy that you can at least connect to.
