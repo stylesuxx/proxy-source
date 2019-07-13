@@ -1,5 +1,5 @@
 # Proxy Source
-[![Build Status](https://travis-ci.org/stylesuxx/proxy-source.svg?branch=master)](https://travis-ci.org/stylesuxx/proxy-source)
+[![Build Status](https://travis-ci.org/stylesuxx/proxy-source.svg?branch=master)](https://travis-ci.org/stylesuxx/proxy-source) [![dependencies Status](https://david-dm.org/stylesuxx/proxy-source/status.svg)](https://david-dm.org/stylesuxx/proxy-source) [![devDependencies Status](https://david-dm.org/stylesuxx/proxy-source/dev-status.svg)](https://david-dm.org/stylesuxx/proxy-source?type=dev)
 
 > You need a working proxy for your project? Look no further.
 
