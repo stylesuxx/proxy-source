@@ -124,18 +124,10 @@ class ProxySource {
     };
   }
 
-  initialize() {
-    return new Promise(async (resolve, reject) => {
-      try {
-        const proxies = await this.getProxies();
-        const sanitizedProxies = this.sanitizeProxies(proxies);
-        this.proxies = sanitizedProxies;
-
-        resolve(true);
-      } catch (e) {
-        reject(e);
-      }
-    });
+  async initialize() {
+    const proxies = await this.getProxies();
+    const sanitizedProxies = this.sanitizeProxies(proxies);
+    this.proxies = sanitizedProxies;
   }
 
   async get() {
